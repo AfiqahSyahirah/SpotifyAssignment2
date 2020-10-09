@@ -1,0 +1,32 @@
+<div class="ui segment" *ngIf="album">
+  <div class="ui items">
+    <div class="item">
+      <div class="image" *ngIf="album.images.length > 0">
+        <img class="image" src="{{album.images[0].url}}">
+      </div>
+      <div class="content">
+        <h1 *ngIf="album.artists.length > 0">
+          {{album.artists[0].name}}
+        </h1>
+        <h4 class="header">{{album.name}}</h4>
+        <div class="ui list">
+          <li class="item">RELEASE DATE: {{album.release_date}}</li>
+          <li class="item">LABEL: {{album.label}}</li>
+          <li class="item">POPULARITY: {{album.popularity}}</li>
+          <a class="ui primary button" target="_blank" href="{{album.external_urls.spotify}}">VIEW ON SPOTIFY</a>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="item">
+      <div class="ui divided list">
+        <div *ngFor="let track of album.tracks.items">
+          <li>
+            <h5>{{track.track_number}} - {{track.name}}</h5>
+            <a class="ui primary button" target="_blank" href="{{track.preview_url}}">PREVIEW TRACKS</a>
+          </li>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
